@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Row.unity
+  isLoaded: 1
+  isActive: 1
