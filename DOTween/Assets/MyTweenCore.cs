@@ -40,7 +40,7 @@ namespace My.DoTween.Core
         // 空构造函数
         protected Tween() {}
 
-        public void Clear()
+        public virtual void Clear()
         {
             id = null;
             userData = null;
@@ -189,6 +189,15 @@ namespace My.DoTween.Core
             sequence.currentObject      = null;
 
             return sequence;
+        }
+
+        public override void Clear()
+        {
+            // 基类调用
+            base.Clear();
+            // 清除列表内的Tween
+            foreach (object tween in tweenActions)
+                if (tween is Tween) ((Tween)tween).Clear();
         }
 
         public override void Update(float dt)
